@@ -4,10 +4,10 @@ namespace Aircompany.Planes
 {
     public abstract class Plane
     {
-        public string _model;
-        public int _maxSpeed;
-        public int _maxFlightDistance;
-        public int _maxLoadCapacity;
+        private readonly string _model;
+        private readonly int _maxSpeed;
+        private readonly int _maxFlightDistance;
+        private readonly int _maxLoadCapacity;
 
         public Plane(string model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity)
         {
@@ -22,39 +22,30 @@ namespace Aircompany.Planes
             return _model;
         }
 
-        public int GetMS()
+        public int GetMaxSpeed()
         {
             return _maxSpeed;
         }
 
-        public int MAXFlightDistance()
+        public int GetMaxFlightDistance()
         {
             return _maxFlightDistance;
         }
 
-        public int MAXLoadCapacity()
+        public int GetMaxLoadCapacity()
         {
             return _maxLoadCapacity;
         }
 
         public override string ToString()
         {
-            return "Plane{" +
-                "model='" + _model + '\'' +
-                ", maxSpeed=" + _maxSpeed +
-                ", maxFlightDistance=" + _maxFlightDistance +
-                ", maxLoadCapacity=" + _maxLoadCapacity +
-                '}';
+            return "Plane{" + "model='" + _model + '\'' + ", maxSpeed=" + _maxSpeed + ", maxFlightDistance=" + _maxFlightDistance + ", maxLoadCapacity=" + _maxLoadCapacity + '}';
         }
 
         public override bool Equals(object obj)
         {
-            var plane = obj as Plane;
-            return plane != null &&
-                   _model == plane._model &&
-                   _maxSpeed == plane._maxSpeed &&
-                   _maxFlightDistance == plane._maxFlightDistance &&
-                   _maxLoadCapacity == plane._maxLoadCapacity;
+  
+            return obj is Plane plane && _model == plane._model && _maxSpeed == plane._maxSpeed && _maxFlightDistance == plane._maxFlightDistance && _maxLoadCapacity == plane._maxLoadCapacity;
         }
 
         public override int GetHashCode()
